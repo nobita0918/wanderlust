@@ -1,0 +1,139 @@
+<% layout("/layout/boilerplate") %>
+<body>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <h2>D_E_T_A_I_L_S</h2>
+      <div class="card listing-card">
+        <img src="<%= showlist.image.url %>" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <p class="card-text">
+            <b class="tittle"> <%= showlist.title %></b> <br />
+          </p>
+
+          <ul>
+            <li>Owned by : <b><%= showlist.owner.username %></b></li>
+            <li><%= showlist.description %></li>
+            <li><%= showlist.price.toLocaleString("en-IN") %></li>
+            <li><%= showlist.location %></li>
+            <li><%= showlist.country %></li>
+          </ul>
+        </div>
+        <br />
+
+        <% if(currUser && currUser._id.equals(showlist.owner._id)){ %>
+        <div class="btns">
+          <a
+            class="btn btn-dark show-btn edit-btn"
+            href="/listings/<%= showlist._id %>/edit"
+          >
+            Edit</a
+          >
+          <form
+            method="post"
+            action="/listings/<%= showlist._id %>?_method=DELETE"
+          >
+            <button class="btn btn-dark show-btn">Delete</button>
+          </form>
+        </div>
+      </div>
+      <% } %>
+      <hr />
+
+      <p><b>ALL reviews</b></p>
+      <div class="row">
+        <% for(review of showlist.reviews){ %>
+        <div class="card border-secondary mb-3 col-5 ms-3">
+          <div class="card-header">@<%=review.author.username%></div>
+          <div class="card-body mb-3">
+            <p
+              class="starability-result"
+              data-rating="<%= review.rating %>"
+            ></p>
+            <p class="card-text"><%= review.comment %></p>
+          </div>
+          <form
+            class="mb-3"
+            method="post"
+            action="/listings/<%= showlist._id %>/reviews/<%= review._id %>?_method=Delete"
+          >
+            <button class="btn btn-sm btn-dark">Delete</button>
+          </form>
+        </div>
+        <% } %>
+      </div>
+
+      <% if(currUser){ %>
+      <div class="review mb-3">
+        <form
+          class="needs-validation"
+          action="/listings/<%= showlist._id %>/reviews"
+          method="post"
+          novalidate
+        >
+          <div class="mb-3 mt-3">
+            <fieldset class="starability-slot">
+              <legend>Rating:</legend>
+              <input
+                type="radio"
+                id="no-rate"
+                class="input-no-rate"
+                name="review[rating]"
+                value="1"
+                checked
+                aria-label="No rating."
+              />
+              <input
+                type="radio"
+                id="first-rate1"
+                name="review[rating]"
+                value="1"
+              />
+              <label for="first-rate1" title="Terrible">1 star</label>
+              <input
+                type="radio"
+                id="first-rate2"
+                name="review[rating]"
+                value="2"
+              />
+              <label for="first-rate2" title="Not good">2 stars</label>
+              <input
+                type="radio"
+                id="first-rate3"
+                name="review[rating]"
+                value="3"
+              />
+              <label for="first-rate3" title="Average">3 stars</label>
+              <input
+                type="radio"
+                id="first-rate4"
+                name="review[rating]"
+                value="4"
+              />
+              <label for="first-rate4" title="Very good">4 stars</label>
+              <input
+                type="radio"
+                id="first-rate5"
+                name="review[rating]"
+                value="5"
+              />
+              <label for="first-rate5" title="Amazing">5 stars</label>
+            </fieldset>
+          </div>
+          <div class="mb-3 mt-3">
+            <label class="form-label" for="comment">Comment</label>
+            <textarea
+              class="form-control"
+              rows="5"
+              name="review[comment]"
+              id="comment"
+              required
+            ></textarea>
+            <div class="invalid-feedback">Please describe it.</div>
+          </div>
+          <button class="btn btn-outline-dark">Submit</button>
+        </form>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</body>

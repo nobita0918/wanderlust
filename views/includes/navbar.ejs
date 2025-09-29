@@ -1,0 +1,79 @@
+<style>
+  .search-btn {
+    background-color: #fe424d;
+    color: aliceblue;
+    padding: 0rem 0.8rem;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    scale: 0.9;
+  }
+
+  .search-btn:hover {
+    background-color: #fe424d;
+    color: aliceblue;
+  }
+
+  .search-btn i {
+    /* display: inline; */
+    display: flex;
+    margin-right: 0.2rem;
+    align-items: center;
+  }
+
+  .search-bar {
+    border-radius: 25px;
+  }
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"
+      ><i class="fa-regular fa-compass"></i
+    ></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings">Explore</a>
+        <a class="nav-link" href="/listings/new">Add New listing</a>
+      </div>
+
+      <div class="navbar-nav ms-auto">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2 search-bar"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <b>Search</b>
+          </button>
+        </form>
+      </div>
+
+      <div class="navbar-nav ms-auto">
+        <% if(!currUser){ %>
+        <button type="button" class="btn btn-outline-success nav-btn">
+          <a href="/login">Login</a>
+        </button>
+        <button type="button" class="btn btn-outline-primary nav-btn">
+          <a href="/signup">Sign up</a>
+        </button>
+        <% } %> <% if(currUser){ %>
+        <button type="button" class="btn btn-outline-primary me-2 nav-btn">
+          <a href="/logout">Logout</a>
+        </button>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
