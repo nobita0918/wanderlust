@@ -28,5 +28,16 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^8.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nobita0918/nobita0918.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nobita0918/nobita0918/issues"
+  },
+  "homepage": "https://github.com/nobita0918/nobita0918#readme"
 }
