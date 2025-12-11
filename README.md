@@ -25,8 +25,7 @@ wanderlust is a full-stack accommodation booking platform that allows users to e
 | MongoDB + Atlas | Database & Cloud Storage       |
 | Passport.js     | Authentication & Authorization |
 | Mapbox API      | Maps Integration               |
-| EJS             | Templating Engine (if used)    |
-| Render          | Deployment Platform            |
+| EJS             | Templating Engine (if used)    |     |
 
 ## 🚀 Getting Started
 
